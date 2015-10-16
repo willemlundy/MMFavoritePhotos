@@ -22,6 +22,7 @@
 
 @property NSString *photoID;
 @property UIImage *image;
+@property BOOL isFavorite;
 
 -(void)favoriteButtonPressedInCell:(Photo *)photo;
 

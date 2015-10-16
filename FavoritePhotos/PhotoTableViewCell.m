@@ -8,6 +8,11 @@
 
 #import "PhotoTableViewCell.h"
 
+@interface PhotoTableViewCell ()
+
+
+@end
+
 @implementation PhotoTableViewCell
 
 - (void)awakeFromNib {

@@ -8,6 +8,7 @@
 
 #import "SearchPhotosViewController.h"
 #import "Photo.h"
+#import "PhotoTableViewCell.h"
 
 NSString * const access_token  = @"35085869.ab103e5.46117e2cdc7c432693d637687e974dac";
 
@@ -92,12 +93,12 @@ https://api.instagram.com/v1/users/35085869/media/recent/?access_token=35085869.
 
 -(UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
 
-    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"Cell"];
+    PhotoTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"PhotoCell"];
 
     Photo* photo = self.photos[indexPath.row];
 
-    cell.textLabel.text = photo.photoID;
-    cell.imageView.image = photo.image;
+    cell.photoImageLabel.text = photo.photoID;
+    cell.photoImageView.image = photo.image;
 
     return cell;
 }

@@ -7,11 +7,16 @@
 //
 
 #import <Foundation/Foundation.h>
+@class Photo;
 
 @interface FavoritePhotosManager : NSObject
 
 @property (nonatomic) NSMutableArray *favorites;
 
--(void)favoriteButtonPressed:(id)photo;
+//
+
+-(void)favoriteButtonPressed:(Photo *)photo;
+
++ (Photo *)getPhotoForID:(NSString *)photoID;
 
 @end

@@ -7,7 +7,7 @@
 //
 
 #import "FavoritePhotosManager.h"
-#import "Photo.h"
+#import "Photo.h" 
 
 @interface FavoritePhotosManager () <PhotoDelegate>
 
@@ -17,6 +17,10 @@
 
 @implementation FavoritePhotosManager
 
+
+
+
+
 -(NSMutableArray *)favorites{
     if (!_favorites){
         _favorites = [NSMutableArray new];
@@ -24,6 +28,19 @@
 
     return _favorites;
 }
+
+//+ (Photo *)getPhotoForID:(NSString *)photoID
+//{
+//    NSLog(@"getPhotoForIDCalled");
+//    
+//    return nil;
+//    
+//}
+
+
+
+
+
 
 /*
 

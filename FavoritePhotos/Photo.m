@@ -16,6 +16,7 @@
     if (self = [super init]){
         self.photoID = photoArray[@"id"];
         self.image = [UIImage imageWithData:[NSData dataWithContentsOfURL:[NSURL URLWithString:photoArray[@"images"][@"thumbnail"][@"url"]]]];
+        self.isFavorite = NO;
 
     }
 
@@ -31,8 +32,10 @@
 
     NSMutableArray *photos = [NSMutableArray new];
     for (NSDictionary *photoDictionary in resultsDictionary[@"data"]){
+        
         Photo *photo = [[Photo alloc] initWithDictionary:photoDictionary];
         [photos addObject:photo];
+        
     }
     return photos;
 
