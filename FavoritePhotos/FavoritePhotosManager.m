@@ -17,7 +17,27 @@
 
 @implementation FavoritePhotosManager
 
+static FavoritePhotosManager *sharedPhotoManager = nil;
 
++ (instancetype)sharedManager
+{
+    if (!sharedPhotoManager) {
+        sharedPhotoManager = [[FavoritePhotosManager alloc] init];
+    }
+    return sharedPhotoManager;
+}
+
+- (instancetype)init {
+    if (sharedPhotoManager) {
+        // init method is allowed to return different object
+        return sharedPhotoManager;
+    }
+    self = [super init];
+    if (self) {
+        
+    }
+    return self;
+}
 
 
 
@@ -29,32 +49,25 @@
     return _favorites;
 }
 
-//+ (Photo *)getPhotoForID:(NSString *)photoID
-//{
-//    NSLog(@"getPhotoForIDCalled");
-//    
-//    return nil;
-//    
-//}
-
-
-
-
-
-
-/*
-
--(void)favoriteButtonPressed:(id)photo{
-
-    if (photo.isFavorite){
-        photo.isFavorite = NO;
-        [self.favorites removeObject:photo];
-    } else {
-        photo.isFavorite=YES;
+- (void)addPhotoToFavorites:(Photo *)photo
+{
+    // if the photo is not already in the array
+    
+    
+    NSPredicate *filterPredicate = [NSPredicate predicateWithFormat:@"SELF.photoID contains[cd] %@", photo.photoID];
+    
+    if (![self.favorites filteredArrayUsingPredicate:filterPredicate])
+    {
         [self.favorites addObject:photo];
+        NSLog(@"Added photo: %@", photo.photoID);
     }
-
+    
 }
- */
+
+
+
+
+
+
 
 @end

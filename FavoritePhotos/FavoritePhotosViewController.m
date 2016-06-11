@@ -7,8 +7,14 @@
 //
 
 #import "FavoritePhotosViewController.h"
+#import "PhotoTableViewCell.h"
+#import "Photo.h"
 
-@interface FavoritePhotosViewController ()
+@interface FavoritePhotosViewController () <UITableViewDataSource, UITableViewDelegate>
+@property (weak, nonatomic) IBOutlet UITableView *tableView;
+
+@property NSMutableArray *favoritesArray;
+
 
 @end
 
@@ -19,9 +25,39 @@
     // Do any additional setup after loading the view.
 }
 
+- (void)viewWillAppear:(BOOL)animated
+{
+   // self.tableView rel
+}
+
+
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
+}
+
+- 
+
+(UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    PhotoTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"FavoriteCell"];
+    
+//    Photo* photo = self.photos[indexPath.row];
+//    
+//    cell.cellIndexPath = indexPath;
+//    cell.delegate = self;
+//    
+//    cell.photoImageLabel.text = photo.photoID;
+//    cell.photoImageView.image = photo.image;
+    
+    return cell;
+}
+
+-(NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
+{
+    
+    return 1;
+    
 }
 
 /*

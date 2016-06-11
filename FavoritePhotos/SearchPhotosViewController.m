@@ -12,7 +12,7 @@
 
 NSString * const access_token  = @"35085869.ab103e5.46117e2cdc7c432693d637687e974dac";
 
-@interface SearchPhotosViewController () <UISearchBarDelegate, UITableViewDataSource, UITableViewDelegate>
+@interface SearchPhotosViewController () <UISearchBarDelegate, UITableViewDataSource, UITableViewDelegate, PhotoTableViewCellDelegate>
 /*
 
 https://api.instagram.com/v1/tags/nofilter/media/recent?client_id=CLIENT-ID
@@ -52,7 +52,6 @@ https://api.instagram.com/v1/users/35085869/media/recent/?access_token=35085869.
 -(void)performNewSearchWithTag:(NSString *)search{
 
     NSString *baseURL = [NSString stringWithFormat:@"https://api.instagram.com/v1/tags/%@/media/recent/?access_token=", search];
-
     NSURL *url = [NSURL URLWithString:[NSString stringWithFormat:@"%@%@", baseURL, access_token]];
 
     NSURLSessionDataTask *task = [[NSURLSession sharedSession] dataTaskWithURL:url completionHandler:^(NSData * _Nullable data, NSURLResponse * _Nullable response, NSError * _Nullable error) {
@@ -96,19 +95,36 @@ https://api.instagram.com/v1/users/35085869/media/recent/?access_token=35085869.
     PhotoTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"PhotoCell"];
 
     Photo* photo = self.photos[indexPath.row];
-
+   
+    cell.cellIndexPath = indexPath;
+    cell.delegate = self;
+    
     cell.photoImageLabel.text = photo.photoID;
     cell.photoImageView.image = photo.image;
 
     return cell;
 }
 
--(NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-
-    return self.photos.count;
+-(NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
+{
+    if (self.photos.count <= 10)
+    {
+        return self.photos.count;
+    }
+    else
+    {
+        return 10;
+    }
 }
 
-
+- (void)favoritePressed:(NSIndexPath *)indexPath
+{
+    
+    //NSLog(@"%li", (long)indexPath.row);
+    // Pass the selected photo to the Photo Manager
+    
+    
+}
 
 
 - (void)didReceiveMemoryWarning {

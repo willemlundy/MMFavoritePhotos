@@ -25,4 +25,12 @@
     // Configure the view for the selected state
 }
 
+- (IBAction)onFavoriteButtonPressed:(UIButton *)sender
+{
+    
+    [self.delegate favoritePressed:self.cellIndexPath];
+    
+}
+
+
 @end

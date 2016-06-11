@@ -15,8 +15,8 @@
 
 //
 
--(void)favoriteButtonPressed:(Photo *)photo;
+//-(void)favoriteButtonPressed:(Photo *)photo;
 
-+ (Photo *)getPhotoForID:(NSString *)photoID;
+//+ (Photo *)getPhotoForID:(NSString *)photoID;
 
 @end
