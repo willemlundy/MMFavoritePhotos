@@ -1,5 +1,5 @@
 //
-//  ViewController.h
+//  FavoritePhotosViewController.h
 //  FavoritePhotos
 //
 //  Created by Philip Henson on 10/15/15.
@@ -8,8 +8,6 @@
 
 #import <UIKit/UIKit.h>
 
-@interface ViewController : UIViewController
-
+@interface FavoritePhotosViewController : UIViewController
 
 @end
-
